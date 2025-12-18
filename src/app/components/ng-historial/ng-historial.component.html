@@ -1,0 +1,123 @@
+<div class="modal-background" *ngIf="isOpen" (click)="close()">
+  <div
+    class="modal-container"
+    [ngClass]="{
+      small: size === 'small',
+      medium: size === 'medium',
+      large: size === 'large'
+    }"
+  >
+    <div class="modal-header">
+      <h5 class="modal-title">Historial</h5>
+      <button type="button" class="btn-close" (click)="close()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+
+    <!-- Contenido del modal -->
+    <div (click)="$event.stopPropagation()">
+          <app-card  >
+
+
+            <div
+              class="scroll-container p-3"
+              style="max-height: 600px; overflow-y: auto"
+            >
+                 <h5 class="card-title">
+                  <small>ID:{{ documento.id }}</small>
+                  <small>CDC:{{ documento.cdc }}</small>
+                </h5>
+
+                <div class="card p-3 mb-3">
+                  <div class="row">
+                    <div class="col-6">
+                      <strong>Comprobante:</strong> {{ documento.nroComprobante }}
+                    </div>
+                    <div class="col-6">
+                      <strong>Timbrado:</strong> {{ documento.timbrado }}
+                    </div>
+
+                    <div class="col-6">
+                      <strong>Estado:</strong> {{ documento.estado }}
+                    </div>
+                    <div class="col-6">
+                      <strong>Fecha:</strong> {{ documento.fecha }}
+                    </div>
+                    <div class="col-6">
+                      <strong>Descuento:</strong>
+                      {{ documento.importeDescuento | number }} Gs
+                    </div>
+                    <div class="col-6">
+                      <strong>Total:</strong> {{ documento.importeTotal | number }} Gs
+                    </div>
+                    <div class="col-12">
+                      <strong>Cliente:</strong> {{ documento.cliente.razonSocial }} -
+                      {{ documento.cliente.nroDocumento }}
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 mb-3">
+                  @if( ['Rechazado', 'EstadoDesconocido'].includes(documento.estado)){
+                  <button class="btn btn-warning btn-sm" (click)="reintentar()">
+                    Reintentar <fa-icon [icon]="faRotateRight"></fa-icon>
+
+                  </button>
+                    @if( ['Rechazado', 'EstadoDesconocido'].includes(documento.estado)){
+                  <button class="btn btn-warning btn-sm" (click)="BorrarHistorial()">
+                    Borrar historial <fa-icon [icon]="faRotateRight"></fa-icon>
+                  </button>
+                }
+                  } @if( ['Rechazado', 'Pendiente', 'Recibido', 'Aprobado',
+                  'RechazadoInutil'].includes(documento.estado)){
+                  <button class="btn btn-danger btn-sm" (click)="anularSifen()">
+                    Anular <fa-icon  [icon]="faTrash" ></fa-icon>
+                  </button>
+                  } @if( ['Rechazado', 'Recibido', 'Aprobado'].includes(documento.estado)
+                  ){
+                  <button class="btn btn-info btn-sm" (click)="concultarCDC()">
+                    Consulta CDC <fa-icon [icon]="faSearch"></fa-icon>
+                  </button>
+                  }
+                </div>
+
+
+              <!-- Lista de pasos -->
+              <div class="steps">
+                <div *ngFor="let item of historialXml" class="step">
+                  <div class="step-content">
+                    <div class="step-header">
+                      <span class="step-number">{{ item.orden }}</span>
+                      <span class="step-title">{{ item.estado }}</span>
+                      <span class="step-date">{{
+                        item.fechaCreacion | date: 'dd/MM/yyyy HH:mm'
+                      }}</span>
+                    </div>
+                    <div class="step-actions">
+                      <button class="btn btn-primary btn-sm" (click)="verXml(item)">
+                        Ver XML <fa-icon [icon]="faFileCode"></fa-icon>
+
+                      </button>
+                      <!-- Botón para generar KUDE, solo cuando estado sea "FIRMADO" y orden sea 2 -->
+                      <button
+                        *ngIf="item.estado === 'FIRMADO' && item.orden === 2"
+                        class="btn btn-success btn-sm"
+                        (click)="generateKude(item.id)"
+                      >
+                        Generar KUDE <fa-icon [icon]="faFileLines"></fa-icon>
+
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button (click)="close()" type="button" class="btn btn-secondary">
+                Cerrar  <fa-icon  [icon]="faTrash" ></fa-icon>
+              </button>
+            </div>
+          </app-card>
+        </div>
+      </div>
+</div>

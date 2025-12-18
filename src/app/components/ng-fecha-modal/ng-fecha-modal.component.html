@@ -1,0 +1,21 @@
+<div class="modal-background" *ngIf="isOpen" (click)="close()">
+  <div class="modal-container" (click)="$event.stopPropagation()" [ngClass]="{ small: size === 'small' }">
+    <div class="modal-header">
+      <h5 class="modal-title">Cambiar Fecha</h5>
+      <button type="button" class="btn-close" (click)="close()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="confirmarSeleccion()">
+      <div class="mb-3">
+        <label for="fecha" class="form-label">Nueva Fecha</label>
+        <input type="date" class="form-control" formControlName="fecha" />
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>
