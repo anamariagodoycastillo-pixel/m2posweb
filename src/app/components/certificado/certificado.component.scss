@@ -1,0 +1,26 @@
+ /* Define a custom class to make text smaller */
+ .small-table th,
+ .small-table td {
+   font-size: 0.5rem; /* Adjust the font size as needed */
+ }
+.custom-row {
+  font-size: 0.7rem; /* Tamaño de letra similar al de .custom-select */
+  font-weight: 400; /* Peso de la letra */
+  line-height: 1.5; /* Altura de línea para mayor legibilidad */
+background-color: var(--card-bg);
+  color: var(--card-text);}
+
+.custom-row .field {
+  padding: 0.375rem 0.75rem; /* Espaciado dentro de las celdas */
+background-color: var(--card-bg);
+  color: var(--card-text);  font-size: 0.7rem; /* Tamaño de letra igual al del select */
+}
+
+.custom-row .bi-trash {
+  font-size: 1rem; /* Tamaño adecuado para el ícono */
+}
+
+.custom-row .btn:focus {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}

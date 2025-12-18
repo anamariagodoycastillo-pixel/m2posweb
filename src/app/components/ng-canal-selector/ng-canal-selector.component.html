@@ -1,0 +1,22 @@
+<div class="modal-background" *ngIf="isOpen" (click)="close()">
+  <div class="modal-container medium" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h5 class="modal-title">Seleccionar Canal</h5>
+      <button type="button" class="btn-close" (click)="close()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+
+    <ul class="list-group">
+      @for (canal of canales; track canal) {
+        <li class="list-group-item"
+            [class.active]="canal === canalSeleccionado"
+            (click)="seleccionarCanal(canal)">
+          {{ canal }}
+        </li>
+      } @empty {
+        <li class="list-group-item">No hay canales disponibles</li>
+      }
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="modal fade show d-block" id="leafletModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Seleccionar ubicación</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div id="leaflet-map" style="height: 400px; width: 100%;"></div>
+      </div>
+      <div class="modal-footer">
+
+        <button class="btn btn-outline-success" (click)="confirm()">Guardar  <fa-icon [icon]="faSave"></fa-icon>
+</button>
+        <button  class="btn btn-outline-danger"(click)="closeModal()">Cancelar
+          <fa-icon [icon]="faCircleXmark"></fa-icon>
+
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+@use '../../../styles/variables' as *;
+
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to right, var(--login-bg-start, #343a40), var(--login-bg-end, #212529));
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background-color: var(--card-bg, #ffffff);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 575.98px) {
+    padding: 1.5rem;
+  }
+}
+
+.logo {
+  max-width: 160px;
+  height: auto;
+}
+
+.form-control {
+  border-radius: 0.5rem;
+  background-color: var(--input-bg, #f8f9fa);
+  color: var(--input-text, #000);
+  border: 1px solid var(--input-border, #ced4da);
+
+  &:focus {
+    border-color: var(--input-focus-border, #495057);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+}
+
+.input-group .btn {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.btn-primary {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  background-color: var(--btn-primary, #0d6efd);
+  border: none;
+
+  &:hover {
+    background-color: var(--btn-primary-hover, #0b5ed7);
+  }
+}
+
+.form-check-label {
+  color: var(--text-color, #000);
+}

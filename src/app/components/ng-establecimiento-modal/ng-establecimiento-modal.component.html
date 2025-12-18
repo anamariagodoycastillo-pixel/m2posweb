@@ -1,0 +1,43 @@
+<div class="modal-background" *ngIf="isOpen" (click)="close()">
+  <div class="modal-container" (click)="$event.stopPropagation()" [ngClass]="{ small: size === 'small', medium: size === 'medium', large: size === 'large' }">
+    <div class="modal-header">
+      <h5 class="modal-title">Seleccionar Establecimiento</h5>
+      <button type="button" class="btn-close" (click)="close()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="confirmarSeleccion()">
+      <div class="row mb-3">
+        <label for="codDepartamento" class="col-md-4 col-form-label">Departamento</label>
+        <div class="col-md-8">
+          <select class="custom-select custom-select-sm" formControlName="codDepartamento">
+            <option *ngFor="let d of departamentos" [value]="d.codigo">{{ d.descripcion }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="codCiudad" class="col-md-4 col-form-label">Ciudad</label>
+        <div class="col-md-8">
+          <select class="custom-select custom-select-sm" formControlName="codCiudad">
+            <option *ngFor="let c of ciudades" [value]="c.codigo">{{ c.descripcion }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="codBarrio" class="col-md-4 col-form-label">Barrio</label>
+        <div class="col-md-8">
+          <select class="custom-select custom-select-sm" formControlName="codBarrio">
+            <option *ngFor="let b of barrios" [value]="b.codigo">{{ b.descripcion }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>

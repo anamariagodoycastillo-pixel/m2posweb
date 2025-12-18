@@ -1,0 +1,79 @@
+.detalles {
+  padding: 0 !important;
+}
+
+.details-wrapper {
+  width: 100%;
+  max-height: 285px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+}
+
+tr.border-bottom td {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.bg-soft-even {
+  background-color: #f9f9f9 !important;
+}
+
+.bg-soft-odd {
+  background-color: #f0f8ff !important;
+}
+
+.fa-icon {
+  font-size: 0.6rem;
+}
+
+.detalles-p0 {
+  padding: 0;
+}
+
+.selector{
+  cursor: pointer;
+}
+
+
+/* detalles */
+#details {
+  width: 100%;
+  height: 285px;
+  overflow-y: auto; /* Solo mostrará la barra de desplazamiento vertical */
+  overflow-x: hidden; /* Ocultará la barra de desplazamiento horizontal */
+}
+
+/* Estilos del scrollbar */
+#details::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+}
+
+/* Fija la cabecera de la tabla al hacer scroll */
+#details thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Color de fondo para la cabecera fija */
+  z-index: 1; /* Asegura que la cabecera esté por encima del contenido */
+}
+tr.border-bottom td {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.bg-soft-even {
+  background-color: #f9f9f9 !important;
+}
+
+.bg-soft-odd {
+  background-color: #f0f8ff !important;
+}

@@ -1,0 +1,136 @@
+
+  <div class="detalles pt-4 p-0">
+    <div class="details-wrapper">
+      <div id="details">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Cant.</th>
+              <th scope="col">%</th>
+
+              <!--  <th scope="col">Producto</th> -->
+              <th scope="col">Precio</th>
+              <th scope="col">Total</th>
+              <th scope="col">Del</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (detalle of detalles; track detalle.varianteId; let index =
+            $index) {
+            <!--   TR datos nombre del producto -->
+            <tr class="border-bottom">
+              <td
+                colspan="6"
+                class="ps-4 text-muted"
+                style="font-size: 0.7rem"
+                [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'"
+              >
+                {{ detalle.codErp }} -
+                {{ detalle.descripcion?.toUpperCase() || 'SIN DESCRIPCIÓN' }}
+              </td>
+            </tr>
+            <!--   TR detalles -->
+            <tr>
+              <th
+                scope="row"
+                [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'"
+              >
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic outlined example"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    (click)="ajusteCantidad(index, -1)"
+                  >
+                    <fa-icon class="fa-xs"  [icon]="faMinus"></fa-icon>
+                  </button>
+                  <span class="btn btn-outline-secondary">{{
+                    detalle.cantidad | number
+                  }}</span>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    (click)="ajusteCantidad(index, 1)"
+                  >
+                    <fa-icon class="fa-xs"  [icon]="faPlus"></fa-icon>
+                  </button>
+                </div>
+              </th>
+              <td [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'">
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  (click)="toggleExpand(index)"
+                >
+                  {{ detalle.porcDescuento }}%
+                </button>
+              </td>
+
+              <!--  <td [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'">
+                {{ detalle.codErp }}
+              </td> -->
+              <td [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'">
+                {{ detalle.importePrecio | number }}
+              </td>
+              <td [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'">
+                {{ detalle.importeTotal | number }}
+              </td>
+              <td
+                [ngClass]="[
+                  index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd',
+                  'action-cell'
+                ]"
+              >
+                <button
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="quitarProducto(index)"
+                >
+                  <fa-icon class="fa-xs"  [icon]="faTrash"></fa-icon>
+                </button>
+              </td>
+            </tr>
+
+            <tr *ngIf="detalle.expandido">
+              <td colspan="6"                 [ngClass]="index % 2 === 0 ? 'bg-soft-even' : 'bg-soft-odd'"
+>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Descuento (%)</label>
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        [(ngModel)]="porcDescuentoDetalle"
+                        min="0"
+                        max="100"
+                      />
+                      <button
+                        class="btn btn-success btn-sm"
+                        (click)="actualizarDescuento(index)"
+                        title="Aplicar descuento"
+                      >
+                        <fa-icon class="fa-xs"  [icon]="faCheckCircle"></fa-icon>
+                      </button>
+                      <button
+                        class="btn btn-secondary btn-sm"
+                        (click)="toggleExpand(index)"
+                        title="Cancelar"
+                      >
+                        <fa-icon class="fa-xs"  [icon]="faTimesCircle"></fa-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            } @empty {
+            <tr></tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

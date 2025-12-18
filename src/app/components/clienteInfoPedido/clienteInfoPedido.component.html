@@ -1,0 +1,67 @@
+<div class="cliente-info d-flex flex-column gap-2">
+  <!-- Cliente -->
+
+  <div class="d-flex align-items-center gap-2">
+    <strong title="Cliente">
+      <fa-icon [icon]="faUserCircle" class="fs-3"></fa-icon>
+    </strong>
+
+    <div>
+      <ng-container *ngIf="cliente?.nombre; else noCliente">
+        <div class="fw-bold fs-5">{{ cliente.nroDocumento }}</div>
+        <div class="small">{{ formatearNombre(cliente.nombre, 45) }}</div>
+      </ng-container>
+      <ng-template #noCliente>
+        <div class="text-danger">Atención seleccione Cliente</div>
+      </ng-template>
+    </div>
+  </div>
+  <!-- Tabla de info (en grid) -->
+  <div class="row g-2">
+    <!-- Condición de Pago -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div>
+        <strong title="Condicion de Pago">
+          <fa-icon [icon]="faMoneyBillWave" class="me-1"></fa-icon>:
+        </strong>
+        <ng-container *ngIf="condicionPago?.id; else noCondicion">
+          <span>{{ condicionPago.descripcion }}</span>
+        </ng-container>
+        <ng-template #noCondicion>
+          <small class="text-danger">Seleccione Condición de Pago</small>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Lista de Precio -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+
+        <strong title="Lista de Precio">
+          <fa-icon [icon]="faTags" class="me-1"></fa-icon>:
+        </strong>
+        <ng-container *ngIf="listaPrecio?.id; else noLista">
+          <span>{{ formatearNombre(listaPrecio.descripcion, 45) }}</span>
+        </ng-container>
+        <ng-template #noLista>
+          <small class="text-danger">Seleccione Lista precio</small>
+        </ng-template>
+      </div>
+
+
+        <!-- Sucursal -->
+        <div class="col-sm-12 col-md-6 col-lg-6 ">
+          <strong title="Sucursal">
+            <fa-icon [icon]="faStore" class="me-1"></fa-icon>:
+          </strong>
+          <ng-container *ngIf="sucursal?.id; else noSucursal">
+            <span>{{ sucursal.descripcion }}</span>
+          </ng-container>
+          <ng-template #noSucursal>
+            <small class="text-danger">Atención seleccione Sucursal</small>
+          </ng-template>
+        </div>
+
+
+
+  </div>
+</div>

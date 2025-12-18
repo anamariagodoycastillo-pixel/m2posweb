@@ -1,0 +1,16 @@
+<div class="card-wrapper">
+  <div class="card-header">
+   <ng-container *ngIf="icon">
+  <fa-icon *ngIf="icon && icon.startsWith('fa-')" [icon]="icon" class="card-icon" />
+  <img *ngIf="icon && !icon.startsWith('fa-')" [src]="icon" alt="icon" class="card-icon" />
+</ng-container>
+    <div class="card-titles">
+      <h2 class="card-title">{{ title }}</h2>
+      <p class="card-subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+</div>

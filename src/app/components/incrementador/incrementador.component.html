@@ -1,0 +1,17 @@
+<div class="input-group mb-3 input-compact" id="button-addon3">
+  <button class="btn btn-outline-success" type="button" (click)="cambiarValor(-1)">
+<fa-icon [icon]="faMinus"></fa-icon>
+  </button>
+  <input
+    type="number"
+    class="form-control"
+    name="cantidad"
+    id="inputCantidad"
+    [(ngModel)]="cantidad"
+    min="1"
+    (ngModelChange)="cambioValor()"
+  >
+  <button class="btn btn-outline-success" type="button" (click)="cambiarValor(+1)">
+<fa-icon [icon]="faPlus"></fa-icon>
+  </button>
+</div>

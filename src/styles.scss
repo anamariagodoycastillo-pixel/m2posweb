@@ -1,0 +1,20 @@
+//styles.scss
+@use './styles/variables' as *;
+@use './styles/base' as *;
+@use './styles/buttons' as *;
+@use './styles/themes' as *;
+@use './styles/_form-controls' as *;
+@use './styles/_tables' as *;
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  background-color: var(--bg-color);
+}
+
+html, body {
+  height: 100%;
+}
+
+
+

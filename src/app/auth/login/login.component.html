@@ -1,0 +1,32 @@
+<div class="login-wrapper d-flex align-items-center justify-content-center">
+  <div class="login-box shadow">
+    <div class="text-center mb-4">
+      <img src="../../../assets/img/m2poslogo1dark.png" alt="Logo" class="logo">
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuario</label>
+        <input id="username" formControlName="username" class="form-control" type="email" required placeholder="Correo del usuario">
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="input-group">
+          <input id="password" formControlName="password"
+                 [type]="showPassword ? 'text' : 'password'" class="form-control" required placeholder="Contraseña">
+          <button type="button" class="btn btn-outline-secondary" (click)="toggleShowPassword()">
+            <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input id="rememberMe" formControlName="recuerdame" type="checkbox" class="form-check-input">
+        <label for="rememberMe" class="form-check-label">Recuérdame</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+    </form>
+  </div>
+</div>

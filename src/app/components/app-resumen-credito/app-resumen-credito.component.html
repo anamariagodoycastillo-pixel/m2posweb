@@ -1,0 +1,54 @@
+<div class="table table-custom-responsive">
+  <table class="table table-hover align-middle text-center">
+    <thead class="table table-custom-light">
+      <tr>
+        <th></th>
+        <th class="text-uppercase">{{ titulo }}</th>
+        <th>Monto</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-start border-4 border-info">
+        <td>
+          <fa-icon [icon]="faMoneyBillWave"></fa-icon>
+        </td>
+        <td class="fw-bold text-uppercase text-info">Total Monto</td>
+        <td class="text-info fw-semibold">{{ resumen.totalMonto | number }}</td>
+        <td class="text-info fw-semibold">{{ resumen.totalCreditos }}</td>
+      </tr>
+      <tr class="border-start border-4 border-success">
+        <td>
+          <fa-icon [icon]="faCircleCheck" class="text-success fs-4"></fa-icon>
+        </td>
+        <td class="fw-bold text-uppercase text-success">Total Pagados</td>
+        <td class="text-success fw-semibold">
+          {{ resumen.totalPagados | number }}
+        </td>
+        <td class="text-success fw-semibold">{{ resumen.cantidadPagados }}</td>
+      </tr>
+      <tr class="border-start border-4 border-warning">
+        <td>
+          <fa-icon [icon]="faHourglassHalf"></fa-icon>
+        </td>
+        <td class="fw-bold text-uppercase text-warning">Total Pendientes</td>
+        <td class="text-warning fw-semibold">
+          {{ resumen.totalPendientesACobrar | number }}
+        </td>
+        <td class="text-warning fw-semibold">
+          {{ resumen.cantidadPendientes }}
+        </td>
+      </tr>
+      <tr class="border-start border-4 border-danger">
+        <td>
+          <fa-icon [icon]="faTriangleExclamation"></fa-icon>
+        </td>
+        <td class="fw-bold text-uppercase text-danger">Total Vencidos</td>
+        <td class="text-danger fw-semibold">
+          {{ resumen.totalVencidos | number }}
+        </td>
+        <td class="text-danger fw-semibold">{{ resumen.cantidadVencidos }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
